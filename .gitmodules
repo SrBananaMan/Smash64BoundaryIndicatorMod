@@ -1,0 +1,6 @@
+[submodule "Smash64RecompSyms"]
+	path = Smash64RecompSyms
+	url = https://github.com/Smash64Recomp/Smash64RecompSyms
+[submodule "ssb-decomp-re"]
+	path = ssb-decomp-re
+	url = https://github.com/VetriTheRetri/ssb-decomp-re

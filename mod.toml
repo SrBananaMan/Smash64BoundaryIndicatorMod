@@ -1,0 +1,88 @@
+# Config file for an example Smash64: Recompiled mod.
+
+# Fields that end up in the mod's manifest.
+[manifest]
+
+# Unique ID of this mod. Pick something long enough that it'll never be the same as any other mod.
+# The name displayed in the mod management menu is separate from this so this doesn't need to be human readable.
+id = "ssb64_recomp_mod_template"
+
+# Version of this mod.
+version = "1.0.0"
+
+# The name that will show up for this mod in the mod menu. This should be human readable.
+display_name = "SSB64 Mod Template"
+
+# The description that will show up when this mod is displayed in the mod menu. This should be human readable.
+description = """
+Template for creating Super Smash Bros. 64: Recompiled mods.
+
+The sample code holds every fighter's damage at a fixed percent while the Damage Lock option is enabled.
+
+To customize this template:
+1. Edit src/mod.c to add your functionality
+2. Update mod.toml with your mod's ID, name and description
+3. Build with 'make', then run RecompModTool (see the README)
+
+For more details, see https://github.com/Smash64Recomp/Smash64RecompModTemplate."""
+
+# A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
+short_description = "Template for creating Smash64 Recompiled mods"
+
+# Authors of this mod.
+authors = [ "Your name here" ]
+
+# ID of the target recomp game.
+game_id = "ssb"
+
+# Minimum version of the target recomp (e.g. Smash64: Recompiled) that this mod can run on.
+minimum_recomp_version = "0.0.1"
+
+# Dependency mods. Each entry is the mod's ID and then an optional minimum version of the dependency mod.
+dependencies = [
+# Example dependency:
+#    "modname:1.0.0"
+]
+
+# Native libraries (e.g. DLLs) and the functions they export.
+native_libraries = [
+# Example native library:
+#    { name = "my_native_library", funcs = ["my_native_library_function"] }
+]
+
+# Inputs to the mod tool.
+[inputs]
+
+# Input elf file to generate a mod from.
+elf_path = "build/mod.elf"
+
+# Output mod filename.
+mod_filename = "Smash64_mod_template"
+
+# Reference symbol files.
+func_reference_syms_file = "Smash64RecompSyms/smashbrothers.us.syms.toml"
+data_reference_syms_files = [ "Smash64RecompSyms/smashbrothers.us.datasyms.toml" ]
+
+# Additional files to include in the mod.
+additional_files = [ ]
+
+# Config options that users can modify in the mod menu
+[[manifest.config_options]]
+id = "damage_lock"
+name = "Damage Lock"
+description = "Holds every fighter's damage at the percent below."
+type = "Enum"
+options = [ "Off", "On" ]
+default = "Off"
+
+[[manifest.config_options]]
+id = "damage_lock_percent"
+name = "Locked Percent"
+description = "Damage percent fighters are held at while Damage Lock is on."
+type = "Number"
+min = 0
+max = 999
+step = 1
+precision = 0
+percent = false
+default = 0
